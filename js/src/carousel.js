@@ -489,7 +489,7 @@ class Carousel extends BaseComponent {
     const slideIndex = Manipulator.getDataAttribute(this, 'slide-to')
 
     if (slideIndex) {
-      config.interval = false
+      config.interval = 0
     }
 
     Carousel.carouselInterface(target, config)
