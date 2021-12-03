@@ -5,11 +5,12 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, reflow, typeCheckConfig } from './util/index'
+import { reflow, typeCheckConfig } from './util/index'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import BaseComponent from './base-component'
 import { enableDismissTrigger } from './util/component-functions'
+import { defineJQueryPlugin } from './util/jquery-stuff'
 
 /**
  * Constants
