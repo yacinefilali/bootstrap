@@ -123,7 +123,7 @@ class ScrollSpy extends BaseComponent {
       event.preventDefault()
       const observableSection = this._observableSections.get(event.target.hash)
       if (observableSection) {
-        this._element.scrollTo({ top: observableSection.offsetTop - wrapperOffsetTop, behavior: 'smooth' })
+        this._element.scrollTop = observableSection.offsetTop - wrapperOffsetTop // chrome 60 doesn't support `scrollTo`
       }
     })
   }

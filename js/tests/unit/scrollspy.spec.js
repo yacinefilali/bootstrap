@@ -754,7 +754,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('.content')
       const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
       const observable = fixtureEl.querySelector('#div-jsm-1')
-      const clickSpy = spyOn(div, 'scrollTo').and.callThrough()
+      const clickSpy = spyOnProperty(div, 'scrollTop', 'set').and.callThrough()
       // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         offset: 1,
@@ -762,7 +762,7 @@ describe('ScrollSpy', () => {
       })
 
       setTimeout(() => {
-        expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+        expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
         done()
       }, 100)
       link.click()
