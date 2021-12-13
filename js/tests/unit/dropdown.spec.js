@@ -1142,7 +1142,7 @@ describe('Dropdown', () => {
       })
 
       btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-        expect(dropdownMenu.getAttribute('data-bs-popper')).toBeNull()
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
         done()
       })
 
@@ -1191,7 +1191,7 @@ describe('Dropdown', () => {
       })
 
       btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-        expect(dropdownMenu.getAttribute('data-bs-popper')).toBeNull()
+        expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
         done()
       })
 
