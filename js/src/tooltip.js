@@ -265,7 +265,7 @@ class Tooltip extends BaseComponent {
   }
 
   hide() {
-    if (!this._popper) {
+    if (!this._isShown()) {
       return
     }
 
@@ -288,15 +288,14 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_CLICK] = false
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
+    this._isHovered = false
 
     const complete = () => {
-      if (this._isWithActiveTrigger()) {
+      if (this._isWithActiveTrigger() || this._isHovered) {
         return
       }
 
-      if (!this._isHovered) {
-        tip.remove()
-      }
+      tip.remove()
 
       this._element.removeAttribute('aria-describedby')
       EventHandler.trigger(this._element, this.constructor.Event.HIDDEN)
@@ -305,7 +304,6 @@ class Tooltip extends BaseComponent {
     }
 
     this._queueCallback(complete, this.tip, this._isAnimated())
-    this._isHovered = false
   }
 
   update() {
