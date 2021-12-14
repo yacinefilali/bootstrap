@@ -180,7 +180,7 @@ class Tooltip extends BaseComponent {
         context._leave()
       }
     } else {
-      if (this._getTipElement().classList.contains(CLASS_NAME_SHOW)) {
+      if (this._isShown()) {
         this._leave()
         return
       }
@@ -357,7 +357,7 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     let isShown = false
     if (this.tip) {
-      isShown = this.tip.classList.contains(CLASS_NAME_SHOW)
+      isShown = this._isShown()
       this.tip.remove()
       this.tip = null
     }
@@ -403,6 +403,10 @@ class Tooltip extends BaseComponent {
 
   _isAnimated() {
     return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
+  }
+
+  _isShown() {
+    return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
   }
 
   _getOffset() {
@@ -523,7 +527,7 @@ class Tooltip extends BaseComponent {
   }
 
   _enter() {
-    if (this._getTipElement().classList.contains(CLASS_NAME_SHOW) || this._isHovered) {
+    if (this._isShown() || this._isHovered) {
       this._isHovered = true
       return
     }
