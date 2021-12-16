@@ -123,17 +123,8 @@ function bootstrapDelegationHandler(element, selector, fn) {
 }
 
 function findHandler(events, handler, delegationSelector = null) {
-  const uidEventList = Object.keys(events)
-
-  for (const uidEvent of uidEventList) {
-    const event = events[uidEvent]
-
-    if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
-      return event
-    }
-  }
-
-  return null
+  return Object.values(events)
+    .find(event => event.originalHandler === handler && event.delegationSelector === delegationSelector)
 }
 
 function normalizeParams(originalTypeEvent, handler, delegationFn) {
