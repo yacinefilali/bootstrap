@@ -71,7 +71,7 @@ To change that opacity, override `--bs-border-opacity` via custom styles or inli
 <div class="border border-success p-2" style="--bs-border-opacity: .5;">This is 50% opacity success border</div>
 {{< /example >}}
 
-Or, choose from any of the `.bg-opacity` utilities:
+Or, choose from any of the `.border-opacity` utilities:
 
 {{< example >}}
 <div class="border border-success p-2 mb-2">This is default success border</div>
